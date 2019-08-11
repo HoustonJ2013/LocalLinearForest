@@ -6,5 +6,5 @@ Python 3.7, two packages were used: sklearn 0.19.2, and numpy 1.15.4. It is buil
 The local linear forest shows some improvement on the "step function" in the ordinary random forest. See [notebook](notebook/Toy_Example.ipynb)
 
 
-<<img src="./toy_example.png" width=360  alt="Banana" ALIGN="Middle">
+<<img src="./toy_example.png" width=600  alt="Banana" ALIGN="Middle">
 
