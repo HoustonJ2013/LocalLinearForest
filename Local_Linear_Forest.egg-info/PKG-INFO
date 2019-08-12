@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: Local-Linear-Forest
+Version: 0.0.1
+Summary: A POC python implementation of local linear forest
+Home-page: https://github.com/HoustonJ2013/LocalLinearForest
+Author: jingbo liu
+Author-email: jingbo.liu2013@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
