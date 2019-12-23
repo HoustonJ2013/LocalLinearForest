@@ -1,4 +1,5 @@
 README.md
+setup.py
 Local_Linear_Forest.egg-info/PKG-INFO
 Local_Linear_Forest.egg-info/SOURCES.txt
 Local_Linear_Forest.egg-info/dependency_links.txt

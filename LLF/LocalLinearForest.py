@@ -1,4 +1,5 @@
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import StandardScaler, RobustScaler, MinMaxScaler
 import numpy as np
 
 
@@ -12,14 +13,16 @@ class LocalLinearForest(RandomForestRegressor):
         self.leaf_indices = None  ## Leaf indices matrix : n_samples x n_estimator
         self.n_features = None
         self.n_samples = None
+        self.scaler = StandardScaler()
 
     def fit(self, X, y):
-        self.train_x = X ## n_samples x n_features
+        X_trans = self.scaler.fit_transform(X)
+        self.train_x = X_trans ## n_samples x n_features
         self.train_y = y ## n_samples x 1
-        self.n_samples = X.shape[0]
-        self.n_features = X.shape[1]
-        RandomForestRegressor.fit(self, X, y)
-        self.leaf_indices = self.apply(X) ## n_sample x n_estimators
+        self.n_samples = X_trans.shape[0]
+        self.n_features = X_trans.shape[1]
+        RandomForestRegressor.fit(self, X_trans, y)
+        self.leaf_indices = self.apply(X_trans) ## n_sample x n_estimators
 
     # def _set_leaves_count(self):
     #     max_indices = np.amax(self.leaf_indices)
@@ -53,10 +56,12 @@ class LocalLinearForest(RandomForestRegressor):
         return mu, theta
 
     def predict(self, X):
+        X_trans = self.scaler.transform(X)
+        # print("made a scale transform")
         result = [] 
-        for i in range(X.shape[0]):
+        for i in range(X_trans.shape[0]):
             # print(i)
-            mu, theta = self.predict_one(X[i, :].reshape(1, -1))
+            mu, theta = self.predict_one(X_trans[i, :].reshape(1, -1))
             result.append(mu)
         return np.array(result)
 
